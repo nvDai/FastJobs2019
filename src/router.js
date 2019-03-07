@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Home from './views/Home'
+import Login from './views/Login'
 
 Vue.use(Router)
 
@@ -11,7 +12,18 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      meta: {
+        title: 'Tìm việc thần tốc với FastJobs'
+      }
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login,
+      meta: {
+        title: 'Đăng nhập cùng FastJobs'
+      }
     },
     {
       path: '/about',

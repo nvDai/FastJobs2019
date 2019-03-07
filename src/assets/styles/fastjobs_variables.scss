@@ -1,0 +1,87 @@
+
+/*==================COLOR==================*/
+$color-primary: #0097C7;
+//$color-secondary: #08e0b1;
+$color-secondary: #00B3DA;
+$color-black: #222222;
+$color-white: #ffffff;
+$color-gray: #f6f6f6;
+$color-border: #f3f3f3;
+$color-hover: #009688;
+/*
+f30a49
+ff7a5a
+fc3d6c
+*/
+$color-pink: #f30a49;
+$color-red: #ea4335;
+$color-icon: #C2C2C2;
+$color-scroll-bar: #d1cfcf;
+$color-scroll-bar--hover: #a8a8a8;
+$color-tags: #d4f7e8;
+
+/*==================BACKGROUND COLOR==================*/
+$background-color-base: #f6f6f6;
+$bc-border-box: #fcfcfc;
+
+
+/*==================FONT SIZE==================*/
+$fs-base: 14px;
+$fs-large-18: 18px;
+
+$--font-size-base: 14px;
+$--font-size-small: 13px;
+$--font-size-large: 18px;
+$--font-color-disabled-base: #bbb;
+$--font-weight-primary: 500;
+$--font-line-height-primary: 24px;
+
+/*==================FONT WEIGHT==================*/
+$fw-base-500: 500;
+$fw-small-400: 400;
+$fw-big-700: 700;
+
+/*==================WIDTH==================*/
+
+$width-80: 80%;
+$width-100: 100%;
+$page-width: 80%;
+$page-sign-in-width: 1000px;
+
+/*==================HEIGHT==================*/
+$header-height: 72px;
+
+
+/*==================PADDING==================*/
+@mixin margin-center($val) {
+  margin: $val auto;
+}
+$icon-mr: 3px;
+$padding-base-20: 20px;
+$padding-border-box-10: 10px;
+$padding-border-box-15: 15px;
+
+/*==================MARGIN==================*/
+
+$mg-top-bottom-15: 15px;
+$mg-top-nav-bar-60: 65px;
+
+/*==================SIZE==================*/
+$br-2: 2px;
+$br-3: 3px;
+$br-5: 5px;
+
+$width-scroll-bar: 15px;
+
+
+/*==================Z-INDEX==================*/
+$index-normal-1: 1 ;
+$index-top-1000: 1000;
+$index-popper-2000: 2000;
+
+/*==================LINE HEIGHT==================*/
+$line-height-30: 30px;
+$line-height-35: 35px;
+$line-height-40: 40px;
+$line-height-50: 50px;
+

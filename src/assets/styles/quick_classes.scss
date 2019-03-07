@@ -1,0 +1,130 @@
+
+.hr-1 {
+  border: 0;
+  height: 1px;
+  color: $color-black;
+  opacity: 0.5;
+  margin-top: 10px;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.tag {
+  display: inline-block;
+  border: 1px solid $color-primary;
+  background-color: $color-tags;
+  padding: 0 5px;
+  font-size: 0.9rem;
+  border-radius: $br-5;
+  margin-right: 5px;
+}
+
+.card-status {
+  display: inline;
+  border: 1px solid transparent;
+  background-color: $color-primary;
+  padding: 1px;
+  font-size: 12px;
+  border-radius: 3px;
+  color: $color-white;
+  text-align: center;
+}
+
+/*============================JOB BOX=============================*/
+
+.box-container {
+  border: 1px solid $color-border;
+  background-color: $color-white;
+  border-radius: 2px;
+
+}
+
+.box-title {
+  border-bottom: 1px solid $color-border;
+  text-transform: uppercase;
+  padding: 10px;
+  font-size: 1.3rem;
+  font-weight: $fw-base-500;
+}
+
+/*============================JOB CARD=============================*/
+
+.card {
+  display: flex;
+  align-items: center;
+  border: 1px solid $color-border;
+  border-radius: 2px;
+  font-size: 1.2rem;
+  padding: $padding-border-box-10;
+  transition: all 0.15s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 0 5px $color-primary;
+  //border: 2px solid $color-primary;
+  //cursor: pointer;
+}
+
+.card:active {
+  box-shadow: 0 0 0 transparent;
+  transition: none;
+}
+
+/*====================PADDING===================*/
+
+.padding-right-0 {
+  padding-right: 0 !important;
+}
+
+.padding-left-0 {
+  padding-left: 0 !important;
+}
+
+.padding-10 {
+  padding: 10px;
+}
+
+.padding-15 {
+  padding: 15px;
+}
+
+/*====================MARGIN===================*/
+
+.mg-top-10 {
+  margin-top: 10px !important;
+}
+
+.mg-bottom-10 {
+  margin-bottom: 10px !important;
+}
+
+.mg-top-15 {
+  margin-top: 15px !important;
+}
+
+.mg-bottom-15 {
+  margin-bottom: 15px !important;
+}
+
+.mg-left-20 {
+  margin-left: 20px;
+}
+
+/*====================TEXT ALIGN===================*/
+
+.ta-center {
+  text-align: center;
+}
+
+/*=====================TEXT COLOR====================*/
+
+.t-navy {
+  color: $color-primary;
+}
+
+.t-pink {
+  color: $color-pink;
+}
+/*=======================BUTTON========================*/
+
+
+
