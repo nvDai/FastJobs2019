@@ -27,14 +27,13 @@
       <div class="cut-diamond"></div>
     </div>
 
-
   </div>
 </template>
 
 <script>
-  export default {
-    name: "IntroductionBox"
-  }
+export default {
+  name: 'IntroductionBox'
+}
 </script>
 
 <style lang="scss" scoped>

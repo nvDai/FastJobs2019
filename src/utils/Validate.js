@@ -45,11 +45,11 @@ const Vld = {
       '092': 'Vietnamobile',
       '0186': 'Vietnamobile',
       '0188': 'Vietnamobile'
-    }
-    val = val.replace(/[ .]/g, '')
-    if (!/^(01[2689]|08|09)[0-9]{8}$/.test(val)) return false
+    };
+    val = val.replace(/[ .]/g, '');
+    if (!/^(01[2689]|08|09)[0-9]{8}$/.test(val)) return false;
     for (let index in carriers) {
-      if (!carriers.hasOwnProperty(index)) continue
+      if (!carriers.hasOwnProperty(index)) continue;
       if (val.substr(0, index.length) === index) return carriers[index]
     }
     return false
@@ -87,6 +87,6 @@ const Vld = {
     return (typeof val === 'string') && (min === -1 || val.length >= min) && (max === -1 || val.length <= max)
   }
 
-}
+};
 
-export default Vld
+export default Vld;

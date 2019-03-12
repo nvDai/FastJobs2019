@@ -42,7 +42,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs_variables";
+  @import "../../../../assets/styles/fastjobs_variables";
 
   .selection-box {
     position: relative;
@@ -61,7 +61,7 @@
       z-index: 2;
       display: inline-block;
       width: 30px;
-      font-size: 18px;
+      height: 1.3rem;
       opacity: 0.5;
     }
   }

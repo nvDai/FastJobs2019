@@ -17,7 +17,7 @@
       </el-col>
 
       <el-col :span="6" class="selection-box">
-        <selection-box
+        <SelectionBox
           :options="jobOptions"
           iconPrefix="far"
           iconName="clipboard"
@@ -28,7 +28,7 @@
       </el-col>
 
       <el-col :span="6" class="selection-box">
-        <selection-box
+        <SelectionBox
           :options="workAddressOptions"
           iconPrefix="fas"
           iconName="map-marker-alt"
@@ -51,16 +51,16 @@
 </template>
 
 <script>
-  import SelectionBox from '~/components/public-components/boxs/SelectionBox';
+  import SelectionBox from "../../boxs/SelectionBox";
 
-  import {ChangeAlias} from '~/assets/js/functions';
-  import {JobOption} from '~/assets/js/data-options';
+  import { ChangeAlias } from "../../../../utils/functions";
+  import { JobOption } from "../../../../utils/enums";
 
   export default {
     components: {
       SelectionBox
     },
-    data() {
+    data () {
       const {
         jobs,
         workAddresses,
@@ -75,33 +75,33 @@
       } = JobOption;
       return {
         searchData: {
-          input: '',
-          jobInput: '',
-          workAddress: '',
+          input: "",
+          jobInput: "",
+          workAddress: ""
         },
         searchInputOptions: [],
         jobOptions: jobs,
         workAddressOptions: workAddresses,
-        links: [],
-      }
+        links: []
+      };
     },
     methods: {
-      handleOnSelectJobOptions(value) {
+      handleOnSelectJobOptions (value) {
         this.searchData.jobInput = value;
       },
-      handleOnSelectWorkAddress(value) {
+      handleOnSelectWorkAddress (value) {
         this.searchData.workAddress = value;
       },
-      handleSelectSearchInput(value) {
+      handleSelectSearchInput (value) {
         this.searchData.input = value.value;
         console.log(value.value);
       },
-      handleOnClickSearch() {
+      handleOnClickSearch () {
         console.log("Click");
         console.log(this.searchData);
       },
 
-      querySearch(queryString, cb) {
+      querySearch (queryString, cb) {
         let job = this.jobOptions;
         let searchInput = ChangeAlias(queryString);
         console.log(searchInput);
@@ -110,40 +110,47 @@
         // call callback function to return suggestions
         cb(results);
       },
-      createFilter(queryString) {
+      createFilter (queryString) {
         return (job) => {
           let aliasJob = ChangeAlias(job.value);
           return (aliasJob.indexOf(queryString) === 0);
         };
-      },
+      }
 
     },
-    mounted() {
+    mounted () {
       // console.log('Created');
       this.searchInputOptions = this.jobOptions.concat(this.workAddressOptions);
       // console.log(this.searchInputOptions)
     }
 
-  }
+  };
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs_variables";
+  @import "../../../../assets/styles/fastjobs_variables";
 
   .container {
     background-color: $color-secondary;
     padding: 15px 0;
     width: 100%;
-    display: flex;
-    justify-content: center;
+    height: 90px;
+
   }
 
   .search-bar {
     width: $page-width;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto !important;
   }
 
   .job-input {
     position: relative;
+    display: flex;
+    align-items: center;
+
     svg {
       left: 8px;
     }
@@ -161,8 +168,8 @@
   .svg-icon {
     position: absolute;
     z-index: 2;
-    left: 12px;
-    height: 40px;
+    /*left: 12px;*/
+    height: 1.3rem;
     opacity: 0.5;
   }
 
@@ -189,7 +196,6 @@
 </style>
 
 <style>
-
 
   .search-bar .el-input .el-input__inner,
   .search-bar .el-select .el-input__inner {

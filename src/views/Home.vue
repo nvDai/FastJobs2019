@@ -1,15 +1,16 @@
 <template>
-  <div class="home">
-    <el-button type="primary">Click
-
-    </el-button>
-    <!--<font-awesome-icon :icon="['fas', 'user-tie']"/>-->
+  <div style="margin-top: 72px">
+    <SearchBar/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-export default {
-  name: 'home'
-}
+  import SearchBar from "../components/public-components/bars/SearchBar";
+
+  export default {
+    name: "Home",
+    components: {
+      SearchBar,
+    }
+  };
 </script>
