@@ -51,10 +51,10 @@
 </template>
 
 <script>
-  import SelectionBox from "../../boxs/SelectionBox";
+  import SelectionBox from '../../boxs/SelectionBox';
 
-  import { ChangeAlias } from "../../../../utils/functions";
-  import { JobOption } from "../../../../utils/enums";
+  import { ChangeAlias } from '../../../../utils/functions';
+  import { JobOption } from '../../../../utils/enums';
 
   export default {
     components: {
@@ -168,7 +168,6 @@
   .svg-icon {
     position: absolute;
     z-index: 2;
-    /*left: 12px;*/
     height: 1.3rem;
     opacity: 0.5;
   }
@@ -179,18 +178,21 @@
     border: 1px solid $color-white;
     color: $color-white;
     padding: 11px 15px;
-  }
 
-  .search-button:hover {
-    background-color: $color-primary;
-    box-shadow: 0 0 10px $color-white;
-    cursor: pointer;
-  }
+    svg {
+      height: 1rem;
+    }
 
-  .search-button:active {
-    box-shadow: 0 0 0 transparent;
-    transition: none;
-    background-color: $color-secondary;
+    &:hover {
+      background-color: $color-primary;
+      box-shadow: 0 0 10px $color-white;
+      cursor: pointer;
+    }
+    &:active {
+      box-shadow: 0 0 0 transparent;
+      transition: none;
+      background-color: $color-secondary;
+    }
   }
 
 </style>

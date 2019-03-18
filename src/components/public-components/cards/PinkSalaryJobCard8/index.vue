@@ -1,17 +1,17 @@
 <template>
   <div class="card">
     <div class="avatar" @click="handleOnClickAvatar">
-      <!--<nuxt-link :to="jobUrl + jobId" :title="companyName.title">-->
+      <!--<router-link :to="jobUrl + jobId" :title="companyName.title">-->
         <img :src="logoUrl"/>
-      <!--</nuxt-link>-->
+      <!--</router-link>-->
     </div>
 
     <div class="container">
       <el-tooltip effect="dark" :content="jobTitle.title" placement="top-start">
         <p class="position">
-          <nuxt-link :to="jobUrl + jobId">
+          <router-link :to="jobUrl + jobId">
             {{jobTitle.value}}
-          </nuxt-link>
+          </router-link>
         </p>
       </el-tooltip>
 
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-  import {ConvertStringToShorterString, FormattedDate, ConvertToSentenceCase} from '~/assets/js/functions';
+  import {ConvertStringToShorterString, FormattedDate} from '../../../../utils/functions';
 
   export default {
     props: {
@@ -77,7 +77,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs_variables";
+  @import "../../../../assets/styles/fastjobs_variables";
 
   .avatar {
     height: 70px;
@@ -131,7 +131,7 @@
   }
 
   .items {
-    font-size: $fs-small-14;
+    font-size: $fs-small;
     display: flex;
     justify-content: space-between;
     line-height: 25px;
