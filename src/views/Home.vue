@@ -32,7 +32,7 @@
     },
     created () {
       // this.$store.dispatch('fetchJobs');
-      this.fetchUrgentJobs();
+      // this.fetchUrgentJobs();
     }
   };
 </script>

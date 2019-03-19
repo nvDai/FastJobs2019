@@ -9,6 +9,7 @@
       height="550px"
       indicator-position="outside"
       v-bind:interval="60000"
+      class="padding-10"
     >
       <el-carousel-item>
         <el-row :gutter="10">
@@ -80,7 +81,7 @@
       jobBoxTitle: String,
     },
     computed: {
-      ...mapState('HOME_PAGE', {
+      ...mapState('JOBS', {
         jobs: 'urgentJobs'
       }),
 
@@ -88,11 +89,11 @@
     components: {
       QuickJobCard
     },
-    created() {
+    beforeMount() {
       this.fetchUrgentJobs();
     },
     methods: {
-      ...mapActions('HOME_PAGE',{
+      ...mapActions('JOBS',{
         fetchUrgentJobs: 'fetchUrgentJobs'
       }),
     },
@@ -100,4 +101,7 @@
   }
 </script>
 
+<style scoped lang="scss">
+
+</style>
 

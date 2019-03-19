@@ -67,7 +67,7 @@
       }
     },
 
-    created() {
+    beforeMount() {
       this.jobTitle.value = ConvertStringToShorterString(this.jobTitle.title, 0, 33);
       this.companyName.value = ConvertStringToShorterString(this.companyName.title, 0, 32);
       this.deadline = FormattedDate(this.deadline);

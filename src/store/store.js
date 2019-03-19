@@ -12,12 +12,7 @@ export default new Vuex.Store({
   state: {
     jobs: []
   },
-  actions: {
-    fetchJobs: async function({commit, state}, status) {
-      const jobs = await this._vm.$api.get('/jobs?jobNum=1');
-      console.log('fetchJobs', jobs);
-    },
-  },
+  actions: {},
   mutations: {
 
   }

@@ -29,6 +29,12 @@
   text-align: center;
 }
 
+.text_ellipsis {
+  white-space: nowrap!important;
+  overflow: hidden!important;
+  text-overflow: ellipsis!important;
+}
+
 /*============================JOB BOX=============================*/
 
 .box-container {
@@ -44,6 +50,9 @@
   padding: 10px;
   font-size: 1.3rem;
   font-weight: $fw-base-500;
+  svg {
+    height: 1.3rem;
+  }
 }
 
 /*============================JOB CARD=============================*/

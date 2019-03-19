@@ -1,1 +1,1 @@
-export const GET_URGENT_JOBS = 'GET_URGENT_JOBS';
+export const FETCH_URGENT_JOBS = 'FETCH_URGENT_JOBS';
