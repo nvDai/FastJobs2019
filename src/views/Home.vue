@@ -12,6 +12,7 @@
   import SearchBar from '../components/public-components/bars/SearchBar';
   import FunctionBox from '../components/public-components/boxs/FunctionBox';
   import UrgentJobBox from '../components/jobs/UrgentJobBox';
+  import {mapActions} from 'vuex';
 
   export default {
     name: "Home",
@@ -20,8 +21,18 @@
       FunctionBox,
       UrgentJobBox
     },
+    methods: {
+      ...mapActions('JOBS', {
+        fetchUrgentJobs: 'fetchUrgentJobs'
+      }),
+      fetchJobs: async function() {
+        const data =  await this.$api.get('/jobs?jobNum=1');
+        console.log(data);
+      }
+    },
     created () {
-      this.$store.dispatch('fetchJobs');
+      // this.$store.dispatch('fetchJobs');
+      this.fetchUrgentJobs();
     }
   };
 </script>

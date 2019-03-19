@@ -1,18 +1,19 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router/router'
-import store from './store/store'
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router/router";
+import store from "./store/store";
+import axios from "axios";
 
 // Element UI
-import Element from 'element-ui'
-import locale from 'element-ui/lib/locale/lang/vi'
+import Element from "element-ui";
+import locale from "element-ui/lib/locale/lang/vi";
 
 // Vue Particles
-import VueParticles from 'vue-particles'
+import VueParticles from "vue-particles";
 
 // Font Awesome
-import { library, config } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library, config } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import {
   faFacebookF,
@@ -21,7 +22,7 @@ import {
   faInstagram,
   faLinkedinIn,
   faGithub
-} from '@fortawesome/free-brands-svg-icons'
+} from "@fortawesome/free-brands-svg-icons";
 
 import {
   faBuilding,
@@ -31,7 +32,7 @@ import {
   faCheckCircle,
   faDotCircle,
   faCopyright
-} from '@fortawesome/free-regular-svg-icons'
+} from "@fortawesome/free-regular-svg-icons";
 
 import {
   faHome,
@@ -67,7 +68,7 @@ import {
   faCheck,
   faCar,
   faPhoneSquare
-} from '@fortawesome/free-solid-svg-icons'
+} from "@fortawesome/free-solid-svg-icons";
 
 library.add(
   faHome,
@@ -116,23 +117,27 @@ library.add(
   faLinkedinIn,
   faCopyright,
   faGithub
-)
+);
 
-config.autoAddCss = false
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+config.autoAddCss = false;
+Vue.component("font-awesome-icon", FontAwesomeIcon);
 
-Vue.use(Element, { locale })
-Vue.use(VueParticles)
+Vue.use(Element, { locale });
+Vue.use(VueParticles);
 
-Vue.config.productionTip = false
+Vue.prototype.$api = axios.create({
+  baseURL: 'http://127.0.0.1:3000/api'
+});
+
+Vue.config.productionTip = false;
 
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title
-  next()
-})
+  document.title = to.meta.title;
+  next();
+});
 
 new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount('#app')
+}).$mount("#app");

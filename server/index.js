@@ -1,12 +1,29 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
-const jobRouter= require('./modules/jobs/router');
+const jobRouter = require("./modules/jobs/router");
 
 const app = express();
 const port = process.env.port || 3000;
-const mongoDB = 'mongodb://localhost:27017/fastjobs';
+const mongoDB = "mongodb://localhost:27017/fastjobs";
+
+app.use((req, res, next) => {
+  res.setHeader("X-Frame-Options", "ALLOWALL");
+  res.setHeader("Access-Control-Allow-Methods",
+    "POST, GET, PUT, DELETE, OPTIONS"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  // if (req.headers.origin) {
+  //   res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
+  // }
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Authorization, Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 app.use("/api/jobs", jobRouter);
 
@@ -17,8 +34,11 @@ app.get("/", (req, res) => {
 });
 
 mongoose.connect(mongoDB, { useNewUrlParser: true }, (err) => {
-  if (err) console.error(err);
-  else console.log("Connected to DB");
+  if (err) {
+    console.error(err);
+  } else {
+    console.log("Connected to DB");
+  }
 });
 
 app.listen(port, err => {
