@@ -2,22 +2,22 @@
   <div class="card">
     <div class="avatar" @click="handleOnClickAvatar">
       <!--<router-link :to="jobUrl + jobId" :title="companyName.title">-->
-        <img :src="logoUrl"/>
+      <img :src="logoUrl"/>
       <!--</router-link>-->
     </div>
 
-    <div class="container">
-      <el-tooltip effect="dark" :content="jobTitle.title" placement="top-start">
+    <div class="job-info-container">
+      <el-tooltip effect="dark" :content="jobTitle" placement="top-start">
         <p class="position">
           <router-link :to="jobUrl + jobId">
-            {{jobTitle.value}}
+            <strong class="text_ellipsis">{{jobTitle}}</strong>
           </router-link>
         </p>
       </el-tooltip>
 
-      <p class="company" :title="companyName.title">
+      <p class="company" :title="companyName">
         <font-awesome-icon :icon="['far', 'building']"/>
-        <span>{{companyName.value}}</span>
+        <span class="text_ellipsis">{{companyName}}</span>
       </p>
 
       <div class="items">
@@ -37,75 +37,66 @@
 </template>
 
 <script>
-  import {ConvertStringToShorterString, FormattedDate} from '../../../../utils/functions';
-
   export default {
     props: {
-      jobInfo: Object,
+      jobInfo: Object
     },
-    data() {
+    data () {
       return {
         logoUrl: this.jobInfo.logoUrl,
         jobUrl: this.jobInfo.jobUrl,
         jobId: this.jobInfo._jobId,
-        jobTitle: {
-          title: this.jobInfo.jobTitle,
-          value: this.jobInfo.jobTitle
-        },
-        companyName: {
-          title: this.jobInfo.companyName,
-          value: this.jobInfo.companyName
-        },
-        salary: this.jobInfo.salary.min + ' triệu - ' + this.jobInfo.salary.max + ' triệu',
-        deadline: this.jobInfo.deadline
-      }
+        jobTitle: this.jobInfo.jobTitle,
+        companyName: this.jobInfo.companyName,
+        salary: this.jobInfo.salary.long_label,
+        deadline: this.jobInfo.deadline,
+        views: this.jobInfo.views
+      };
     },
     methods: {
-      handleOnClickAvatar() {
+      handleOnClickAvatar () {
         alert("Click");
-        this.$router.push('/tuyen-dung');
+        this.$router.push("/tuyen-dung");
       }
     },
 
-    beforeMount() {
-      this.jobTitle.value = ConvertStringToShorterString(this.jobTitle.title, 0, 33);
-      this.companyName.value = ConvertStringToShorterString(this.companyName.title, 0, 32);
-      this.deadline = FormattedDate(this.deadline);
+    beforeMount () {
+      // this.deadline = FormattedDate(this.deadline);
       // console.log(this.jobInfo);
     }
-  }
+  };
 </script>
 
 <style lang="scss" scoped>
   @import "../../../../assets/styles/fastjobs_variables";
+  $image-size: 70px;
 
   .avatar {
-    height: 70px;
-    width: 70px;
+    height: $image-size;
+    width: $image-size;
+    img {
+      border: 2px solid $color-gray;
+      border-radius: $br-5;
+      height: 100%;
+    }
   }
 
-  img {
-    border: 2px solid $color-gray;
-    border-radius: $br-5;
-    height: 100%;
-  }
-
-  .container {
+  .job-info-container {
     margin-left: 10px;
-    width: 100%;
+    max-width: calc(100% - 70px - 10px);
+    width: calc(100% - 70px - 10px);
   }
 
   .position {
     color: $color-primary;
     font-weight: $fw-base-500;
-    padding-bottom: 5px;
 
     a {
-      display: block;
+      display: inline-block;
       text-transform: lowercase;
-      padding-left: 4px;
+      width: 100%;
 
-      &::first-letter {
+      strong::first-letter {
         text-transform: uppercase;
       }
     }
@@ -113,13 +104,21 @@
 
   .company {
     opacity: 0.8;
-    padding-bottom: 3px;
     text-transform: lowercase;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+
+    svg {
+      margin-right: 3px;
+      opacity: 0.7;
+      display: inline-block;
+      height: 1rem;
+    }
 
     span {
       display: inline-block;
+      font-size: 1rem;
+
       &::first-letter {
         text-transform: uppercase;
       }
@@ -134,28 +133,34 @@
     font-size: $fs-small;
     display: flex;
     justify-content: space-between;
-    line-height: 25px;
 
-    .salary,
-    .work-addresses {
+    svg {
+      font-size: 1rem;
+      opacity: 0.7;
+      display: inline-block;
+      height: 15px;
+    }
+
+    .salary {
+      display: flex;
+      align-items: flex-start;
       color: $color-pink;
+      svg {
+        margin-right: 3px;
+        opacity: 0.7;
+        display: inline-block;
+        height: 1rem;
+      }
+
     }
 
     .deadline {
       opacity: 0.8;
-
       &:hover {
         opacity: 1;
       }
     }
   }
 
-  svg {
-    font-size: 14px;
-    opacity: 0.7;
-    display: inline-block;
-    width: 20px !important;
-    text-align: left;
-    height: 15px;
-  }
+
 </style>

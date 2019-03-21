@@ -9,6 +9,7 @@ const jobs = {
   actions: {
     fetchUrgentJobs: async function({ commit }) {
       const { data } = await this._vm.$api.get("/jobs?jobNum=60");
+      console.log(data)
 
       try {
         let jobs = [];
@@ -18,11 +19,11 @@ const jobs = {
             _employerId: job.employer._id,
             jobTitle: job.title,
             companyName: job.employer.name,
-            salary: { min: job.salary.min, max: job.salary.max },
-            deadline: job.closing_date,
+            salary: job.salary,
+            deadline: job.deadline,
             jobUrl: "/tuyen-dung/viec-lam/",
             logoUrl: job.employer._logo,
-            seen: false
+            views: job._views
           });
         });
 
