@@ -1,27 +1,27 @@
 <template>
   <div class="card">
     <div class="avatar">
-      <nuxt-link :to="jobUrl" :title="companyName">
+      <router-link :to="jobUrl" :title="companyName">
         <img :src="logoUrl"/>
-      </nuxt-link>
+      </router-link>
     </div>
 
-    <div class="container">
+    <div class="job-info-container">
       <el-tooltip
         effect="dark"
         :content="jobTitle"
         placement="top-start"
       >
         <p class="position">
-          <nuxt-link :to="jobUrl">
-            {{jobTitle}}
-          </nuxt-link>
+          <router-link :to="jobUrl">
+            <strong class="text_ellipsis">{{jobTitle}}</strong>
+          </router-link>
         </p>
       </el-tooltip>
 
       <p class="company" :title="companyName">
         <font-awesome-icon :icon="['far', 'building']"/>
-        <span>{{companyName}}</span>
+        <span class="text_ellipsis">{{companyName}}</span>
       </p>
 
       <el-row class="items">
@@ -46,65 +46,56 @@
 </template>
 
 <script>
-  import {ConvertStringToShorterString, FormattedDate} from '~/assets/js/functions';
-
   export default {
     props: {
       jobInfo: Object
     },
     data() {
       return {
-        logoUrl: this.jobInfo.employer._logo,
-        jobUrl: '/tuyen-dung/viec-lam/' + this.jobInfo._slug + '.html',
+        logoUrl: this.jobInfo.logoUrl,
+        jobUrl: this.jobInfo.jobUrl,
         jobId: this.jobInfo._jobId,
-        jobTitle: this.jobInfo.title,
-        companyName: this.jobInfo.employer.name,
+        jobTitle: this.jobInfo.jobTitle,
+        companyName: this.jobInfo.companyName,
         workAddresses: this.jobInfo.locations.join(", "),
-        salary: this.jobInfo.salary.label,
-        deadline: this.jobInfo.deadline
+        salary: this.jobInfo.salary.long_label,
+        deadline: this.jobInfo.deadline,
+        views: this.jobInfo.views
       }
     },
-
-
-    created() {
-    }
   }
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs_variables";
+  @import "../../../../assets/styles/fastjobs_variables";
 
   .avatar {
     height: 70px;
     width: 70px;
+
+    img {
+      border: 2px solid $color-gray;
+      border-radius: $br-5;
+      height: 100%;
+    }
   }
 
-  img {
-    border: 2px solid $color-gray;
-    border-radius: $br-5;
-    height: 100%;
-  }
-
-  .container {
+  .job-info-container {
     margin-left: 10px;
-    width: 100%;
+    max-width: calc(100% - 70px - 10px);
+    width: calc(100% - 70px - 10px);
   }
 
   .position {
     color: $color-primary;
     font-weight: $fw-base-500;
-    padding-bottom: 5px;
 
     a {
-      display: block;
+      display: inline-block;
       text-transform: lowercase;
-      padding-left: 4px;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 290px;
-      text-overflow: ellipsis;
+      width: 100%;
 
-      &::first-letter {
+      strong::first-letter {
         text-transform: uppercase;
       }
     }
@@ -112,18 +103,20 @@
 
   .company {
     opacity: 0.8;
-    padding-bottom: 3px;
     text-transform: lowercase;
     display: flex;
-    align-items: center;
-    text-overflow:ellipsis;
+    align-items: flex-start;
+
+    svg {
+      margin-right: 3px;
+      opacity: 0.7;
+      display: inline-block;
+      height: 1rem;
+    }
 
     span {
       display: inline-block;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 269px;
-      text-overflow: ellipsis;
+      font-size: 1rem;
 
       &::first-letter {
         text-transform: uppercase;
@@ -136,17 +129,29 @@
   }
 
   .items {
-    font-size: 13px;
+    font-size: $fs-small;
     display: flex;
-    justify-content: space-between;
-    line-height: 25px;
+    margin-top: 6px;
 
-    .salary,
-    .work-addresses {
+    svg {
+      opacity: 0.7;
+      display: inline-block;
+      height: 0.8rem;
+      margin-right: 3px;
+    }
+
+    .el-col {
+      display: flex;
+      align-items: center;
+    }
+
+    .salary {
       color: $color-pink;
+
     }
 
     .work-addresses {
+      color: $color-pink;
       display: block;
       white-space: nowrap;
       overflow: hidden;
@@ -156,21 +161,11 @@
 
     .deadline {
       opacity: 0.8;
-      text-align: center;
 
       &:hover {
         opacity: 1;
       }
     }
-  }
-
-  svg {
-    font-size: 14px;
-    opacity: 0.7;
-    display: inline-block;
-    width: 20px !important;
-    text-align: left;
-    height: 15px;
   }
 </style>
 

@@ -1,27 +1,27 @@
 <template>
   <div class="card">
     <el-col :span="2" class="avatar">
-      <nuxt-link :to="jobUrl + jobId" :title="companyName.title">
+      <router-link :to="jobUrl + jobId" :title="companyName">
         <img :src="logoUrl"/>
-      </nuxt-link>
+      </router-link>
     </el-col>
 
     <el-col :span="14" class="job-card--content">
       <el-tooltip
         effect="dark"
-        :content="jobTitle.title"
+        :content="jobTitle"
         placement="top-start"
       >
         <p class="position">
-          <nuxt-link :to="jobUrl + jobId">
-            {{jobTitle.value}}
-          </nuxt-link>
+          <router-link :to="jobUrl + jobId">
+            {{jobTitle}}
+          </router-link>
         </p>
       </el-tooltip>
 
-      <p class="company" :title="companyName.title">
+      <p class="company" :title="companyName">
         <font-awesome-icon :icon="['far', 'building']"/>
-        <span>{{companyName.value}}</span>
+        <span>{{companyName}}</span>
       </p>
     </el-col>
 
@@ -40,9 +40,9 @@
         </el-col>
 
         <el-col :span="12">
-          <p class="work-addresses " :title="workAddresses.title">
+          <p class="work-addresses " :title="workAddresses">
             <font-awesome-icon :icon="['fas', 'map-marker-alt']"/>
-            {{workAddresses.value}}
+            {{workAddresses}}
           </p>
         </el-col>
 
@@ -53,8 +53,6 @@
 </template>
 
 <script>
-  import {ConvertStringToShorterString, FormattedDate} from '~/assets/js/functions';
-
   export default {
     props: {
       jobInfo: Object
@@ -64,33 +62,19 @@
         logoUrl: this.jobInfo.logoUrl,
         jobUrl: this.jobInfo.jobUrl,
         jobId: this.jobInfo._jobId,
-        jobTitle: {
-          title: this.jobInfo.jobTitle,
-          value: this.jobInfo.jobTitle
-        },
-        companyName: {
-          title: this.jobInfo.companyName,
-          value: this.jobInfo.companyName
-        },
-        workAddresses: {
-          title: this.jobInfo.workAddresses.join(', '),
-          value: this.jobInfo.workAddresses.join(', ')
-        },
-        salary: this.jobInfo.salary.min + ' triệu - ' + this.jobInfo.salary.max + ' triệu',
-        deadline: this.jobInfo.deadline
+        jobTitle: this.jobInfo.jobTitle,
+        companyName: this.jobInfo.companyName,
+        workAddresses: this.jobInfo.locations.join(", "),
+        salary: this.jobInfo.salary.long_label,
+        deadline: this.jobInfo.deadline,
+        views: this.jobInfo.views
       }
-    },
-    created() {
-      this.jobTitle.value = ConvertStringToShorterString(this.jobTitle.title, 0, 50);
-      this.companyName.value = ConvertStringToShorterString(this.companyName.title, 0, 50);
-      this.workAddresses.value = ConvertStringToShorterString(this.workAddresses.value, 0, 11);
-      this.deadline = FormattedDate(this.deadline);
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs_variables";
+  @import "../../../../assets/styles/fastjobs_variables";
 
   .card {
     display: flex;
@@ -161,7 +145,6 @@
 
   .deadline {
     line-height: 25px;
-    font-size: $fs-small-14;
     opacity: 0.8;
     &:hover {
       opacity: 1;

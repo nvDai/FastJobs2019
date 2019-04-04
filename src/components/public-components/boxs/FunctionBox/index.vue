@@ -59,6 +59,7 @@
     color: $color-primary;
     -webkit-transition: all 0.15s ease-in-out;
     transition: all 0.15s ease-in-out;
+    padding: 12px;
   }
 
   .function-box:hover {

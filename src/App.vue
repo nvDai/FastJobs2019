@@ -324,6 +324,7 @@ export default {
     text-align: center;
     color: $color-white;
     padding: 36px;
+    margin-top: 30px;
 
     h2 {
       font-size: 2rem;

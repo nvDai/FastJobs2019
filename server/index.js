@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
   res.send("Hello world");
 });
 
-mongoose.connect(mongoDB, { useNewUrlParser: true }, (err) => {
+mongoose.connect(mongoDB, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
   if (err) {
     console.error(err);
   } else {

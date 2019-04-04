@@ -198,7 +198,6 @@
 </style>
 
 <style>
-
   .search-bar .el-input .el-input__inner,
   .search-bar .el-select .el-input__inner {
     border: none;

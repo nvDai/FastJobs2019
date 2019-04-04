@@ -6,13 +6,12 @@
     </h4>
     <el-carousel
       trigger="click"
-      height="550px"
+      height="520px"
       indicator-position="outside"
       v-bind:interval="60000"
-      class="padding-10"
     >
       <el-carousel-item>
-        <el-row :gutter="10">
+        <el-row :gutter="10" class="padding-10">
           <el-col
             :span="8"
             v-for="(item, index) in jobs[0]"
@@ -27,7 +26,7 @@
       </el-carousel-item>
 
       <el-carousel-item>
-        <el-row :gutter="10">
+        <el-row :gutter="10" class="padding-10">
           <el-col
             :span="8"
             v-for="(item, index) in jobs[1]"
@@ -42,7 +41,7 @@
       </el-carousel-item>
 
       <el-carousel-item>
-        <el-row :gutter="10">
+        <el-row :gutter="10" class="padding-10">
           <el-col
             :span="8"
             v-for="(item, index) in jobs[2]"
@@ -56,7 +55,7 @@
       </el-carousel-item>
 
       <el-carousel-item>
-        <el-row :gutter="10">
+        <el-row :gutter="10" class="padding-10">
           <el-col
             :span="8"
             v-for="(item, index) in jobs[3]"
@@ -80,28 +79,22 @@
     props: {
       jobBoxTitle: String,
     },
-    computed: {
-      ...mapState('JOBS', {
-        jobs: 'urgentJobs'
-      }),
-
-    },
     components: {
       QuickJobCard
     },
-    beforeMount() {
-      this.fetchUrgentJobs();
+    computed: {
+      ...mapState('JOBS', {
+        jobs: 'urgentJobs'
+      })
     },
     methods: {
       ...mapActions('JOBS',{
         fetchUrgentJobs: 'fetchUrgentJobs'
-      }),
+      })
     },
-
+    async beforeMount() {
+      await this.fetchUrgentJobs();
+    }
   }
 </script>
-
-<style scoped lang="scss">
-
-</style>
 

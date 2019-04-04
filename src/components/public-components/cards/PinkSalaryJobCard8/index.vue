@@ -1,9 +1,9 @@
 <template>
   <div class="card">
     <div class="avatar" @click="handleOnClickAvatar">
-      <!--<router-link :to="jobUrl + jobId" :title="companyName.title">-->
-      <img :src="logoUrl"/>
-      <!--</router-link>-->
+      <router-link :to="jobUrl + jobId" :title="companyName">
+        <img :src="logoUrl"/>
+      </router-link>
     </div>
 
     <div class="job-info-container">
@@ -28,7 +28,7 @@
 
         <p class="deadline" :title="deadline">
           <font-awesome-icon :icon="['fas', 'user-clock']"/>
-          <span> {{deadline}}</span>
+          <span>{{deadline}}</span>
         </p>
       </div>
 
@@ -58,22 +58,17 @@
         alert("Click");
         this.$router.push("/tuyen-dung");
       }
-    },
-
-    beforeMount () {
-      // this.deadline = FormattedDate(this.deadline);
-      // console.log(this.jobInfo);
     }
   };
 </script>
 
 <style lang="scss" scoped>
   @import "../../../../assets/styles/fastjobs_variables";
-  $image-size: 70px;
 
   .avatar {
-    height: $image-size;
-    width: $image-size;
+    height: 70px;
+    width: 70px;
+
     img {
       border: 2px solid $color-gray;
       border-radius: $br-5;
@@ -133,29 +128,24 @@
     font-size: $fs-small;
     display: flex;
     justify-content: space-between;
+    margin-top: 6px;
 
     svg {
-      font-size: 1rem;
       opacity: 0.7;
       display: inline-block;
-      height: 15px;
+      height: 0.8rem;
+      margin-right: 3px;
     }
 
     .salary {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       color: $color-pink;
-      svg {
-        margin-right: 3px;
-        opacity: 0.7;
-        display: inline-block;
-        height: 1rem;
-      }
-
     }
 
     .deadline {
       opacity: 0.8;
+
       &:hover {
         opacity: 1;
       }

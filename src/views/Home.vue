@@ -4,6 +4,20 @@
     <div class="home-container">
       <function-box class="mg-top-15"/>
       <urgent-job-box jobBoxTitle="Việc làm tuyển gấp" class="mg-top-15"/>
+      <el-row>
+        <el-col :span="16">
+          <attractive-job-box
+            jobBoxTitle="Việc làm hấp dẫn"
+            class="mg-top-15"
+          />
+        </el-col>
+        <el-col :span="8">
+          <advanced-search-box
+            title="Tìm kiếm nâng cao"
+            class="mg-top-15"
+          />
+        </el-col>
+      </el-row>
     </div>
   </div>
 </template>
@@ -12,6 +26,8 @@
   import SearchBar from '../components/public-components/bars/SearchBar';
   import FunctionBox from '../components/public-components/boxs/FunctionBox';
   import UrgentJobBox from '../components/jobs/UrgentJobBox';
+  import AttractiveJobBox from '../components/jobs/AttractiveJobBox';
+  import AdvancedSearchBox from '../components/public-components/boxs/AdvancedSearch';
   import {mapActions} from 'vuex';
 
   export default {
@@ -19,20 +35,17 @@
     components: {
       SearchBar,
       FunctionBox,
-      UrgentJobBox
+      UrgentJobBox,
+      AttractiveJobBox,
+      AdvancedSearchBox
     },
     methods: {
       ...mapActions('JOBS', {
-        fetchUrgentJobs: 'fetchUrgentJobs'
+        fetchUrgentJobs: 'fetchUrgentJobs',
       }),
-      fetchJobs: async function() {
-        const data =  await this.$api.get('/jobs?jobNum=1');
-        console.log(data);
-      }
     },
     created () {
-      // this.$store.dispatch('fetchJobs');
-      // this.fetchUrgentJobs();
+
     }
   };
 </script>

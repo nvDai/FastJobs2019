@@ -1,11 +1,11 @@
 <template>
-  <div class="advanced-search-box">
-    <h4>
+  <div class="box-container">
+    <h4 class="box-title">
       <font-awesome-icon :icon="['fas', 'briefcase']"/>
-      TÌM KIẾM NÂNG CAO
+      {{title}}
     </h4>
-    <hr class="hr-1"/>
-    <div class="advanced-search-box--container">
+
+    <div class="advanced-search-box__container">
       <div class="selection-box">
         <font-awesome-icon :icon="['far', 'clipboard']"/>
         <el-select v-model="advancedSearchData.job" filterable placeholder="Ngành nghề">
@@ -78,9 +78,12 @@
 </template>
 
 <script>
-  import {JobOption} from '~/assets/js/data-options';
+  import { JobOption } from '../../../../utils/enums';
 
   export default {
+    props: {
+      title: String
+    },
     data() {
       const {
         jobTitles,
@@ -110,20 +113,15 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs_variables";
+  @import "../../../../assets/styles/fastjobs_variables";
 
-  .advanced-search-box {
-    padding: $padding-border-box-15;
-    background-color: $color-white;
-    margin: $mg-top-bottom-15 auto;
-  }
-
-  .advanced-search-box--container {
+  .advanced-search-box__container {
     text-align: center;
+    padding: 10px;
   }
 
   h4 {
-    font-size: $fs-large-18;
+    font-size: 1rem;
     font-weight: $fw-base-500;
   }
 
@@ -142,12 +140,16 @@
   }
 
   .advanced-search-button {
-    font-size: $fs-base-16;
+    font-size: 1rem;
     outline: 0 none;
     transition: all 0.15s ease-in-out;
     background-color: $color-primary;
     color: $color-white;
     font-weight: $fw-base-500;
+
+    svg {
+      height: 0.8rem;
+    }
   }
 
   .advanced-search-button:hover {
@@ -180,7 +182,7 @@
     z-index: 2;
     left: 10px;
     top: 10px;
-    font-size: 18px;
+    height: 0.8rem;
     opacity: 0.5;
   }
 

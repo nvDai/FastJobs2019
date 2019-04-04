@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router/router";
 import store from "./store/store";
 import axios from "axios";
+import Vuebar from 'vuebar';
 
 // Element UI
 import Element from "element-ui";
@@ -128,6 +129,7 @@ Vue.use(VueParticles);
 Vue.prototype.$api = axios.create({
   baseURL: 'http://127.0.0.1:3000/api'
 });
+Vue.use(Vuebar);
 
 Vue.config.productionTip = false;
 

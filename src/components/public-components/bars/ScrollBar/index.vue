@@ -13,7 +13,6 @@
 </script>
 
 <style lang="scss">
-  @import "~assets/css/halujobs_variables";
 
   .vb-container {
     width: 100%;
